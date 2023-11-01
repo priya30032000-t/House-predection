@@ -1,0 +1,98 @@
+Problem Statement - Part II
+1) How can you make sure that a model is robust and generalizable? 
+What are the implications of the same for the accuracy of the model 
+and why?
+Ans: The objective is to keep the model as straightforward as possible, 
+even at the expense of reduced accuracy, in order to enhance its 
+robustness and generalizability. This concept is also rooted in the BiasVariance trade-off. A simpler model introduces more bias but less variance, 
+resulting in increased generalizability. In terms of accuracy, this implies that 
+a robust and generalizable model will exhibit consistent performance on 
+both training and test data, with minimal accuracy discrepancies between 
+the two.
+Bias: Bias signifies errors in the model's ability to learn from the data. High 
+bias suggests that the model struggles to capture intricate data patterns, 
+leading to poor performance on both training and testing data.
+Variance: Variance indicates errors in the model's tendency to overfit the 
+data. High variance signifies that the model excels at fitting the training 
+data but performs poorly on unseen testing data.
+Balancing bias and variance is crucial to avoid the pitfalls of overfitting and 
+underfitting the data.
+Regenerate
+Q2. You have determined the optimal value of lambda for ridge and 
+lasso regression during the assignment. Now, which one will you 
+choose to apply and why?
+Ans: It is crucial to apply coefficient regularization to enhance 
+prediction accuracy, reduce variance, and promote model 
+interpretability.
+In Lasso regression, a parameter known as lambda is employed as a 
+penalty, focusing on the absolute values of coefficient magnitudes, 
+identified through cross-validation. As lambda grows, Lasso pushes 
+coefficients toward zero, potentially setting some variables to 
+precisely zero. Lasso excels at variable selection. When the lambda 
+value is small, it behaves similarly to simple linear regression, but as 
+lambda increases, it introduces shrinkage, leading to the neglect of 
+variables with zero coefficients.
+In Ridge regression, a parameter called lambda is utilized as a 
+penalty, targeting the square of the coefficient magnitudes, which is 
+determined through cross-validation. This penalty term, lambda 
+multiplied by the sum of squared coefficients, penalizes coefficients 
+with larger values. As lambda increases, the model's variance 
+decreases while maintaining a consistent bias. Ridge regression, in 
+contrast to Lasso Regression, retains all variables in the final model.
+Q3. After building the model, you realized that the five most important 
+predictor variables in the lasso model are not available in the incoming data. 
+You will now have to create another model excluding the five most 
+important predictor variables. Which are the five most important predictor 
+variables now?
+Ans: The following five crucial predictor variables that will be omitted are:
+1. GrLivArea
+2. OverallQual
+3. OverallCond
+4. TotalBsmtSF
+5. GarageArea
+Q4. What is the optimal value of alpha for ridge and lasso regression? 
+What will be the changes in the model if you choose double the value of 
+alpha for both ridge and lasso? What will be the most important 
+predictor variables after the change is implemented?
+Ans: For Ridge regression, as we analyze the relationship between 
+negative mean absolute error and alpha, we observe that as alpha 
+increases from 0, the error term decreases, but the training error exhibits 
+an upward trend with increasing alpha values. Interestingly, when alpha 
+equals 2, the test error is minimized. Consequently, we decided to adopt 
+an alpha value of 2 for our Ridge regression.
+In the case of Lasso regression, we've chosen a very small alpha value of 
+0.01. As alpha increases, the model intensifies its efforts to penalize 
+coefficients and drive many of them towards zero. Initially, the negative 
+mean absolute error was 0.4 when alpha was applied.
+Doubling the alpha value for our Ridge regression leads us to an alpha 
+value of 10. This results in the model imposing a more substantial penalty, 
+aimed at achieving greater model generalization by simplifying it and 
+reducing its tendency to overfit the dataset. From the graph, we observe 
+that with alpha set to 10, both test and train errors increase.
+Similarly, with increasing alpha in Lasso regression, the model's penalty 
+intensifies, causing more coefficients to be reduced to zero. However, this 
+also leads to a reduction in the R-squared value, indicating a decrease in 
+the model's explanatory power.
+Following the implementation of these changes, the most critical variables 
+for Ridge regression are as follows:
+1. MSZoning_FV
+2. MSZoning_RL
+3. Neighborhood_Crawfor
+4. MSZoning_RH
+5. MSZoning_RM
+6. SaleCondition_Partial
+7. Neighborhood_StoneBr
+8. GrLivArea
+9. SaleCondition_Normal
+10.Exterior1st_BrkFace
+For Lasso regression, after the changes, the most significant variables are:
+1. GrLivArea
+2. OverallQual
+3. OverallCond
+4. TotalBsmtSF
+5. BsmtFinSF1
+6. GarageArea
+7. Fireplaces
+8. LotArea
+9. LotArea
+10.LotFrontag
